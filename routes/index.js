@@ -9,7 +9,7 @@ const userSchema = new mongoose.Schema({
 });
 
 // Create a Mongoose model for the user collection
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("collection_name", userSchema);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
