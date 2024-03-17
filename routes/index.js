@@ -5,7 +5,9 @@ const mongoose = require("mongoose");
 // Define a Mongoose schema for the user
 const userSchema = new mongoose.Schema({
   fname: String,
-  lname: String
+  lname: String,
+  uname: String,
+  pw: String
 });
 
 // Create a Mongoose model for the user collection
@@ -30,7 +32,9 @@ router.post('/signup', function(req, res, next) {
       // Create a new User document and save it to the user collection
       const newUser = new User({
         fname: req.body.fname,
-        lname: req.body.lname
+        lname: req.body.lname,
+        uname: req.body.uname,
+        pw: req.body.pw
       });
 
       newUser.save((err) => {
