@@ -20,10 +20,7 @@ router.post('/signup', function(req, res, next) {
   console.log(req.body);
 
   // Connect to the MongoDB database sampledb
-  mongoose.connect("mongodb://localhost:27017/sampledb", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  }, (err) => {
+  mongoose.connect("mongodb://localhost:27017/sampledb", function(err){
     if (err) {
       console.log(err);
       res.status(500).send("Error connecting to the database");
