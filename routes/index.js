@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-const mongoose = require("mongoose");
+
+const MongoClient=require('mongodb').MongoClient
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -10,15 +11,11 @@ router.get('/', function(req, res, next) {
 router.post('/signup', function(req, res, next) {
   console.log(req.body);
 
-// Connect to the db
-mongoose.connect("mongodb://localhost:27017/latestdb",{
-  useNewUrlParser:true, useUnifiedTopology:true
-},(err)=>{
-  if(err){
-    console.log(err)
-  }else{
-    console.log("succesfully connected")
-  }
+MongoClient.connect('mongodb://localhost:27017', function(err, client){
+  if(err)
+    console.log('error')
+  else
+    client.db('cadd').collection('user').insertOne(req.body)
 })
 
   res.send("success");
