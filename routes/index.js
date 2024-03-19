@@ -16,6 +16,7 @@ MongoClient.connect('mongodb://localhost:27017', function(err, client){
     console.log('error')
   else
     client.db('cadd').collection('user').insertOne(req.body)
+    console.log(req.body)
 })
 
   res.send("success");
